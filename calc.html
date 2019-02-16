@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: url("https://previews.123rf.com/images/saicle/saicle1507/saicle150700074/42285352-abstract-light-technical-geometric-background-vector-design.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="d1">
+            <center>
+                <marquee>
+                    <h1 style="color:crimson;"> CALCULATOR </h1>
+                </marquee>
+            </center>
+            </br>
+            <table border="2" style="height:50vh;">
+                <tr>
+                    <td colspan="4">
+                        <input type="text" id="txt" placeholder="0.0" style="text-align:right;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="clearr()"> C </button>
+                    </td>
+                    <td>
+                        <button onclick="bracket()"> () </button>
+                    </td>
+                    <td>
+                        <button onclick="percentage()"> % </button>
+                    </td>
+                    <td>
+                        <button onclick="divide()"> / </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="seven()"> 7 </button>
+                    </td>
+                    <td>
+                        <button onclick="eight()"> 8 </button>
+                    </td>
+                    <td>
+                        <button onclick="nine()"> 9 </button>
+                    </td>
+                    <td>
+                        <button onclick="multiply()"> * </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="four()"> 4 </button>
+                    </td>
+                    <td>
+                        <button onclick="five()"> 5 </button>
+                    </td>
+                    <td>
+                        <button onclick="six()"> 6 </button>
+                    </td>
+                    <td>
+                        <button onclick="subtract()"> - </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="one()"> 1 </button>
+                    </td>
+                    <td>
+                        <button onclick="two()"> 2 </button>
+                    </td>
+                    <td>
+                        <button onclick="three()"> 3 </button>
+                    </td>
+                    <td>
+                        <button onclick="add()"> + </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="history()"> Hs </button>
+                    </td>
+                    <td>
+                        <button onclick="dott()"> . </button>
+                    </td>
+                    <td>
+                        <button onclick="zero()"> 0 </button>
+                    </td>
+                    <td>
+                        <button onclick="equall()"> = </button>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <center>
+                            <button onclick="clrhstry()"> Clear History </button>
+                        </center>
+                    </td>
+                    <td colspan="2">
+                        <center>
+                            <button onclick="deletee()"> Delete </button>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+            </br>
+            <textarea id="txtar" style="width: 50%; height:20vh ;"> </textarea>
+        </div>
+    </center>
+    <script>
+        document.getElementById("txt").addEventListener("keypress", myFunction);
+        var ischar = 0;
+        globall = "";
+        currentstr = "";
+        calculationstr = "";
+        function checkvalidation() {
+            currentstr1 = document.getElementById("txt").value;
+            len = currentstr1.length;
+            if (ischar === 1) {
+                ischar = 0;
+                currentstr1 = currentstr1.substring(0, len - 1);
+                document.getElementById("txt").value = currentstr1;
+            }
+        }
+        function aContainsB(a, b) {
+            return a.indexOf(b) >= 0;
+        }
+        function perform(vall) {
+            checkvalidation();
+            currentstr = currentstr1 + vall;
+            document.getElementById("txt").value = currentstr;
+        }
+        function one() {
+            perform("1");
+        }
+        function two() {
+            perform("2");
+        }
+        function three() {
+            perform("3");
+        }
+        function four() {
+            perform("4");
+        }
+        function five() {
+            perform("5");
+        }
+        function six() {
+            perform("6");
+        }
+        function seven() {
+            perform("7");
+        }
+        function eight() {
+            perform("8");
+        }
+        function nine() {
+            perform("9");
+        }
+        function zero() {
+            perform("0");
+        }
+        function add() {
+            perform("+");
+        }
+        function subtract() {
+            perform("-");
+        }
+        function multiply() {
+            perform("*");
+        }
+        function divide() {
+            perform("/");
+        }
+        function dott() {
+            if (aContainsB(currentstr, ".")) {
+                window.alert("You cannot enter more than one decimal !!");
+            }
+            else {
+                perform(".");
+            }
+        }
+        function call1() {
+            fnstr = calculationstr.substring(0, n);
+            snstr = calculationstr.substring(n + 1, len);
+            fn = parseFloat(fnstr);
+            sn = parseFloat(snstr);
+        }
+        function call2() {
+            document.getElementById("txt").value = totalll;
+            totalllstr = totalll.toString();
+            currentstr = totalllstr;
+        }
+        function equall() {
+            calculationstr = document.getElementById("txt").value;
+            len = calculationstr.length;
+            if (aContainsB(calculationstr, "+")) {
+                n = calculationstr.indexOf("+");
+                call1();
+                totalll = fn + sn;
+                call2();
+                globall = globall + fnstr + "+" + snstr + "=" + totalllstr + "  Next -> ";
+            }
+            else if (aContainsB(calculationstr, "-")) {
+                n = calculationstr.indexOf("-");
+                call1();
+                totalll = fn - sn;
+                call2();
+                globall = globall + fnstr + "-" + snstr + "=" + totalllstr + "  Next -> ";
+            }
+            else if (aContainsB(calculationstr, "*")) {
+                n = calculationstr.indexOf("*");
+                call1();
+                totalll = fn * sn;
+                call2();
+                globall = globall + fnstr + "*" + snstr + "=" + totalllstr + "  Next -> ";
+            }
+            else if (aContainsB(calculationstr, "/")) {
+                n = calculationstr.indexOf("/");
+                call1();
+                totalll = fn / sn;
+                call2();
+                globall = globall + fnstr + "/" + snstr + "=" + totalllstr + "  Next -> ";
+            }
+
+
+        }
+
+        function clearr() {
+            currentstr = "";
+            calculationstr = "";
+            document.getElementById("txt").value = 0;
+        }
+
+        function history() {
+            document.getElementById("txtar").value = globall;
+        }
+
+        function clrhstry() {
+            globall = "";
+            document.getElementById("txtar").value = "History Cleared !!";
+        }
+
+        function deletee() {
+            calculationstr = document.getElementById("txt").value;
+            len = calculationstr.length;
+            newstr = calculationstr.substring(0, len - 1);
+            document.getElementById("txt").value = newstr;
+            currentstr = newstr;
+        }
+
+        function myFunction(dd) {
+            checkvalidation();
+            ddd = dd.key;
+            dddindex = ddd.charCodeAt(0);
+            if (dddindex >= 65 && dddindex <= 122) {
+                alert("Enter only integers !! Please type another value !!");
+                ischar = 1
+            }
+        }
+    </script>
+</body>
+
+</html>
