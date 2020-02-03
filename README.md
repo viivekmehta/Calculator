@@ -5,3 +5,4 @@ This calculator performs all the basic arithmetical operations. It also contains
 
 ### And to view the history of all the performed operations just click on the "Hs" Button:- 
 <img width="1173" alt="Screenshot 2020-01-12 at 6 07 05 PM" src="https://user-images.githubusercontent.com/47595149/72218954-b3574a00-3566-11ea-8cf0-6eafe94b3a01.png">
+
